@@ -25,7 +25,7 @@ export async function handler(event, context) {
     console.log("ERROR ===> " + err);
     return {
       statusCode: 500,
-      body: JSON.stringify({ msg: "Failed to send email. ❌" }),
+      body: JSON.stringify({ msg: "Failed to send email. ❌", error: err }),
     };
   }
 }
