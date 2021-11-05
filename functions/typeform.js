@@ -5,6 +5,7 @@ export async function handler(event, context) {
     statusCode: 200,
     body: JSON.stringify({
       msg: "This will receive typeform submissions one day.",
+      content: event.body || "No content",
     }),
   };
 }
