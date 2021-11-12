@@ -31,11 +31,11 @@ export async function handler(event, context) {
     return {
       statusCode: 200,
       body: JSON.stringify({ msg: "Emails sent. ✅" }),
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Content-Type",
-        "Access-Control-Allow-Methods": "POST, OPTION",
-      },
+      // headers: {
+      //   "Access-Control-Allow-Origin": "*",
+      //   "Access-Control-Allow-Headers": "Content-Type",
+      //   "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+      // },
     };
   } catch (err) {
     console.log("ERROR ===> " + err);
