@@ -4,6 +4,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 export async function handler(event, context) {
   const body = JSON.parse(event.body);
+  console.log("EVENT ===> ", event);
   console.log("BODY ===> ", body);
   const { firstname, taxes, email } = body;
 
