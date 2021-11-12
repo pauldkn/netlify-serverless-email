@@ -31,14 +31,22 @@ export async function handler(event, context) {
     return {
       statusCode: 200,
       body: JSON.stringify({ msg: "Emails sent. ✅" }),
-      headers: { "Access-Control-Allow-Origin": "*" },
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Methods": "POST, OPTION",
+      },
     };
   } catch (err) {
     console.log("ERROR ===> " + err);
     return {
       statusCode: 500,
       body: JSON.stringify({ msg: "Failed to send emails. ❌", error: err }),
-      headers: { "Access-Control-Allow-Origin": "*" },
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Methods": "POST, OPTION",
+      },
     };
   }
 }
