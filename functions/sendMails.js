@@ -4,20 +4,22 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 export async function handler(event, context) {
   const body = JSON.parse(event.body);
-  console.log("EVENT ===> ", event);
-  console.log("BODY ===> ", body);
+  // console.log("EVENT ===> ", event);
+  // console.log("BODY ===> ", body);
   const { firstname, taxes, email } = body;
 
   let economiePotentielle = taxes > 10000 ? String(10000) : String(taxes);
   let pronostic = String(taxes - economiePotentielle);
 
   const userMail = {
+    // to: process.env.ADMIN_MAIL,
     to: process.env.TEST_MAIL,
     from: process.env.SENDGRID_SENDER,
     template_id: "d-a22be84ea0574aed8b70a3f9a7c5eae7",
     dynamicTemplateData: { firstname, taxes, economiePotentielle, pronostic },
   };
   const adminMail = {
+    // to: process.env.ADMIN_MAIL,
     to: process.env.TEST_MAIL,
     from: process.env.SENDGRID_SENDER,
     subject: "Serverless X SendGrid is Awesome.",
@@ -32,11 +34,11 @@ export async function handler(event, context) {
     return {
       statusCode: 200,
       body: JSON.stringify({ msg: "Emails sent. ✅" }),
-      // headers: {
-      //   "Access-Control-Allow-Origin": "*",
-      //   "Access-Control-Allow-Headers": "Content-Type",
-      //   "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-      // },
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+      },
     };
   } catch (err) {
     console.log("ERROR ===> " + err);
